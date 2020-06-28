@@ -1,0 +1,16 @@
+{
+  "name": "revever",
+  "version": "1.0.0",
+  "description": "i hope this will be a good project to improve myself",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "author": "Fatih Cüre",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.0.5",
+    "typescript": "^3.9.5"
+  }
+}
