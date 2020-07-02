@@ -7,5 +7,4 @@ module.exports = {
   mainBuild: "/electron",
   rendererBuild: "/web"
 
-
 }
