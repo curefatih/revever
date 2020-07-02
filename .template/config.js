@@ -1,9 +1,9 @@
 module.exports = {
 
-  prepath: "./src",
+  prepath: ".",
   buildDir: "./build",
   main: "/main",
-  renderer: "/renderer",
+  renderer: "/src",
   mainBuild: "/electron",
   rendererBuild: "/web"
 

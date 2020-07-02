@@ -4,14 +4,15 @@ const path = require('path')
 const { spawn } = require('child_process')
 const chokidar = require('chokidar');
 const { buildElectron, ...commands } = require('./commands');
+const config = require('./config');
 
 let electronProcess = null
 let manualRestart = false
 
 function startMain() {
   return new Promise((resolve, reject) => {
-    chokidar.watch('./src/main').on('all', (event, path) => {
-      // console.log(event, path);
+    chokidar.watch(config.prepath + config.main).on('all', (event, path) => {
+      console.log(event, path);
 
       // build here 
       buildElectron(() => {
@@ -29,7 +30,7 @@ function startMain() {
         }
 
       })
-      
+
       resolve();
     })
 
@@ -48,7 +49,7 @@ function startElectron() {
 
   var args = [
     '--inspect=5858',
-    path.join(__dirname, '../build/electron/main.js')
+    path.join(__dirname, "../" + config.buildDir + config.mainBuild + "/main.js")
   ]
 
   var env = Object.create(process.env);

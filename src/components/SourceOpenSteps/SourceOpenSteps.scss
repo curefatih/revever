@@ -1,0 +1,12 @@
+.source-open-steps {
+  border: 3px dashed transparentize($color: #ddd, $amount: 0.5);
+  padding: 10px;
+  > .wrap {
+    > .col {
+      padding: 10px;
+      &:first-of-type {
+        border-right: 3px dashed transparentize($color: #ddd, $amount: 0.5);
+      }
+    }
+  }
+}

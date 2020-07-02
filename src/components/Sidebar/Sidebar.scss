@@ -36,6 +36,9 @@
       cursor: pointer;
       opacity: .8;
       transition: .2s ease all;
+      >.col{
+        padding: 3px;
+      }
       &:hover{
         opacity: 1;
       }

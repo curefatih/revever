@@ -4,7 +4,7 @@ const config = require('./config')
 module.exports.buildElectron = function (cb) {
   // console.log("building:", config.mainBuild());
   
-  execSync(`tsc ./src/main/*.ts --outDir ${config.buildDir + config.mainBuild}`)
+  execSync(`tsc ${config.prepath + config.main}/*.ts --allowJs" --outDir ${config.buildDir + config.mainBuild}`)
   if(cb) cb();
 }
 

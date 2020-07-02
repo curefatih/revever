@@ -2,19 +2,49 @@
   "name": "revever",
   "version": "1.0.0",
   "description": "i hope this will be a good project to improve myself",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "build:renderer": "",
-    "build:electron": "",
-    "dev": "node .template/dev.runner.js",
-    "start:electron": "electron ./build/main/main.js",
-    "dev:renderer": "",
-    "dev:main": ""
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "classnames": "^2.2.6",
+    "flexiblegs-css": "^5.6.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "react-scripts": "3.4.1"
   },
-  "author": "Fatih Cüre",
-  "license": "ISC",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "node .template/dev.runner.js",
+    "start:electron": "electron ./build/main/main.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/electron": "^1.6.10",
     "chalk": "^4.1.0",
     "chokidar": "^3.4.0",
     "electron": "^9.0.5",

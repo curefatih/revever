@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron')
+import { app, BrowserWindow, ipcMain, dialog } from 'electron'
 
+let win: BrowserWindow;
 const winURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
@@ -7,17 +8,21 @@ const winURL =
 
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 1424,
-    height: 720
+    height: 720,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: __dirname + '/preload.js'
+    }
   })
 
   // and load the index.html of the app.
   win.loadURL(winURL)
-  console.log(process.env)
 
   // Open the DevTools.
   win.webContents.openDevTools()
+
 }
 
 // This method will be called when Electron has finished
@@ -34,6 +39,7 @@ app.on('window-all-closed', () => {
   }
 })
 
+
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
@@ -44,3 +50,12 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.on('select-dir', (event, arg) => {
+  console.log("SELECT DIR", arg);
+  // const result = await dialog.showOpenDialog(win, {
+  //   properties: ['openDirectory']
+  // })
+  // console.log('directories selected', result.filePaths)
+  event.returnValue = "henlo";
+})
