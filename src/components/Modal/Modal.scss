@@ -1,0 +1,15 @@
+.modal-custom_wrapper{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: transparentize($color: #fff, $amount: 0.5);
+  .modal-content{
+    background-color: #000;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 0 50px transparentize($color: #000000, $amount: 0.8);
+  }
+}
