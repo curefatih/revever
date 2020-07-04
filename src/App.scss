@@ -1,16 +1,46 @@
-.app{
+.app {
   background-color: #202020;
   display: flex;
   height: 100vh;
   color: #ddd;
 
-  .content{
-    // padding: 20px 10px;
-    flex-grow: 1;
-    // height: 100vh;,
-    >.wrap{
-      
-      height: 100vh;
+  .sidebar_wrapper {
+    flex: 0 0 260px;
+  }
+
+  .content {
+    flex: 0 0 calc(100% - 260px);
+    position: relative;
+    overflow: auto;
+    height: 100vh;    
+  }
+
+  .commit-card_wrapper{
+    position: relative;
+    &::after{
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: -50px;
+      top: 0;
+      border-right: 1px solid transparentize($color: #60a3bc, $amount: 0.9);
+    }
+  }
+  .point {
+    position: relative;
+    // height: 100%;
+    &::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px transparentize($color: #82ccdd, $amount: 0.6);
+      border: 1px solid transparentize($color: #60a3bc, $amount: 0.9);
+      background-color: transparentize($color: #0a3d62, $amount: 0.5);
+      position: absolute;
+      left: 50px;
+      top: 0;
+      transform: translate(-50%, -50%);
     }
   }
 }
