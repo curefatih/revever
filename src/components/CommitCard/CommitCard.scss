@@ -1,0 +1,17 @@
+.commit-card {
+  background-color: transparentize($color: #fff, $amount: 0.8);
+  padding: 5px 15px;
+  border: 1px solid transparentize($color: #fff, $amount: 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px transparentize($color: #82ccdd, $amount: 0.9);
+  .message {
+    font-size: 1.2em;
+    h4 {
+      overflow: hidden;
+    }
+    padding: 10px;
+  }
+  .sha {
+    font-size: 0.8em;
+  }
+}
