@@ -1,4 +1,7 @@
 import { app, BrowserWindow, ipcMain, dialog } from 'electron'
+import getRepo from './functions/getRepo';
+import getLogs from './functions/getLogs';
+// import getRepo from './functions/getRepo';
 
 let win: BrowserWindow;
 const winURL =
@@ -11,10 +14,13 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1424,
     height: 720,
+    // minHeight: 230,
+    // minWidth: 540,
     webPreferences: {
       nodeIntegration: true,
       preload: __dirname + '/preload.js'
-    }
+    },
+    frame: process.env.NODE_ENV === "development" ? true : false
   })
 
   // and load the index.html of the app.
@@ -51,11 +57,43 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipcMain.on('select-dir', (event, arg) => {
+ipcMain.on('add-source-dir', async (event, arg) => {
   console.log("SELECT DIR", arg);
+  const result = await dialog.showOpenDialog(win, {
+    properties: ['openDirectory']
+  })
+  console.log('directories selected', result.filePaths)
+
+  if (!result.filePaths.length) {
+    event.returnValue = { status: 0, message: "No folder selected" }
+    return;
+  }
+
+  // TODO: check data first and return if its valid.
+  event.returnValue = { status: 1, message: "Opened folder", data: result.filePaths[0] };
+})
+
+ipcMain.on('get-logs', async (event, repoPath) => {
+  console.log("getLogs", repoPath);
   // const result = await dialog.showOpenDialog(win, {
   //   properties: ['openDirectory']
   // })
   // console.log('directories selected', result.filePaths)
-  event.returnValue = "henlo";
+
+  // if (!result.filePaths.length) {
+  //   event.returnValue = { status: 0, message: "No folder selected" }
+  //   return;
+  // }
+
+  getLogs(repoPath)
+    .then(res => {
+      event.returnValue = { status: 1, message: "Success", data: res };
+    })
+    .catch(err => {
+      event.returnValue = {
+        status: -1,
+        message: "Error while opening reposity:" + err.message
+      }
+    })
+
 })
