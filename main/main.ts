@@ -1,6 +1,8 @@
 import { app, BrowserWindow, ipcMain, dialog } from 'electron'
-import getRepo from './functions/getRepo';
+import * as path from 'path';
+// import getRepo from './functions/getRepo';
 import getLogs from './functions/getLogs';
+import getFiles from './functions/getFiles';
 // import getRepo from './functions/getRepo';
 
 let win: BrowserWindow;
@@ -95,5 +97,29 @@ ipcMain.on('get-logs', async (event, repoPath) => {
         message: "Error while opening reposity:" + err.message
       }
     })
+
+})
+
+ipcMain.on('get-files', async (event, repo: { path: string, sha: string }) => {
+  console.log("getFiles", repo);
+  // const result = await dialog.showOpenDialog(win, {
+  //   properties: ['openDirectory']
+  // })
+  // console.log('directories selected', result.filePaths)
+
+  // if (!result.filePaths.length) {
+  //   event.returnValue = { status: 0, message: "No folder selected" }
+  //   return;
+  // }
+  getFiles(repo.path, repo.sha)
+    .then(res => {
+      event.returnValue = { status: 1, message: "Success", data: res }
+    })
+    .catch(err => {
+      event.returnValue = { status: 0, message: "Error while getting files:" + err.message }
+    })
+
+
+
 
 })
