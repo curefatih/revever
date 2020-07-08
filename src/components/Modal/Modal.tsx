@@ -1,4 +1,4 @@
-import React, { ReactChildren, useEffect, ReactElement } from "react";
+import { useEffect, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.scss";
 

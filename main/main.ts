@@ -30,7 +30,9 @@ function createWindow() {
   win.loadURL(winURL)
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  if (process.env.NODE_ENV === "development")
+    win.webContents.openDevTools()
+
 
 }
 
