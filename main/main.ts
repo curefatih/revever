@@ -23,7 +23,7 @@ function createWindow() {
       preload: __dirname + '/preload.js'
     },
     frame: process.env.NODE_ENV === "development" ? true : false,
-    icon: path.join(__dirname, '../../static/favicon_64x64.png')
+    icon: path.join(__dirname, '/favicon_64x64.png')
   })
 
   // and load the index.html of the app.
