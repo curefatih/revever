@@ -14,6 +14,7 @@ import {
 } from "react-icons/go";
 import Modal from "../Modal/Modal";
 import { getRepositories } from "../../redux/selectors";
+import { useHistory } from "react-router-dom";
 
 const mapStateToProps = (state: any) => {
   return {
@@ -34,11 +35,10 @@ type SidebarProps = PropsFromRedux & {
 
 function Sidebar(props: SidebarProps) {
   const folderInputRef = useRef(null);
-  const [loading, setLoading] = useState(false);
   const [newRepoStatus, setNewRepoStatus] = useState({});
   const [modalShow, setModalShow] = useState(false);
 
-  console.log("repos.", props.repositories);
+  let history = useHistory();
 
 
   useEffect(() => {
@@ -60,6 +60,8 @@ function Sidebar(props: SidebarProps) {
       current: repoPath,
       ...result
     })
+
+    history.push("/commits")
   }
 
 
@@ -96,7 +98,7 @@ function Sidebar(props: SidebarProps) {
       <h5 className="head">Recent Sources</h5>
       <ul className="recent-sources">
 
-        {props.repositories.map((repo: string, index: number) => {
+        {props.repositories.all.map((repo: string, index: number) => {
           const repoSplit = repo.split('/')
           return (
             <li
@@ -109,7 +111,7 @@ function Sidebar(props: SidebarProps) {
           )
         })}
 
-        {!props.repositories.length ?
+        {!props.repositories.all.length ?
           <li className="wrap xl-center">
             <span className="col"><h6>no repo yet.</h6></span>
           </li>
@@ -130,5 +132,4 @@ function Sidebar(props: SidebarProps) {
 }
 
 
-// TODO: addRepo not working well
 export default connector(Sidebar);
