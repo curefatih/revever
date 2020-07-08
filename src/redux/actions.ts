@@ -1,4 +1,4 @@
-import { ADD_REPO, REMOVE_REPO, UPDATE_COMMITS } from "./actionTypes";
+import { ADD_REPO, REMOVE_REPO, UPDATE_COMMITS, UPDATE_CURRENT_REPO } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -16,6 +16,11 @@ export const removeRepo = (content: any) => ({
     id: ++nextTodoId,
     content
   }
+});
+
+export const updateSelectedRepo = (content: any) => ({
+  type: UPDATE_CURRENT_REPO,
+  selected: content
 });
 
 export const updateCommits = (content: any) => ({

@@ -1,5 +1,5 @@
 export const getRepositories = (store: any) => {
-  return store.repositories.all;
+  return store.repositories;
 }
 
 export const getCommits = (store: any) => {
