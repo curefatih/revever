@@ -9,9 +9,13 @@
     h4 {
       overflow: hidden;
     }
-    padding: 10px;
   }
   .sha {
     font-size: 0.8em;
+    cursor: pointer;
+    transition: .2s ease all;
+    &:hover{
+      color: #82ccdd;
+    }
   }
 }

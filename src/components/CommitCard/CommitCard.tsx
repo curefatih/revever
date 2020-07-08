@@ -25,12 +25,14 @@ type CommitCardProps = {
     timezoneOffset: number; // Timezone difference from UTC in minutes
   };
   gpgsig?: string; // PGP signature (if present)
+  onClickSha?: Function
 }
 
 const CommitCard: FunctionComponent<CommitCardProps> = (
   {
     message,
     tree,
+    onClickSha
   }
 ) => {
   return (
@@ -42,7 +44,10 @@ const CommitCard: FunctionComponent<CommitCardProps> = (
           </div>
         </div>
         <div className="col xl-4-12 md-1-1 xl-right">
-          <div className="sha">
+          <div className="sha" onClick={(e) => onClickSha ? onClickSha({
+            event: e,
+            sha: tree
+          }) : null}>
             <p>{tree}</p>
           </div>
         </div>
