@@ -6,6 +6,11 @@ import { connect, ConnectedProps } from "react-redux";
 import './Files.scss';
 
 import File from '../../components/File/File';
+import QMenu from "../../components/QMenu/QMenu";
+
+import {
+  MdArrowBack
+} from 'react-icons/md'
 
 const mapStateToProps = (state: any) => {
   return {
@@ -25,6 +30,8 @@ type FilesProps = PropsFromRedux & {
 function Files(props: FilesProps) {
   let { sha } = useParams();
   const [files, setFiles] = useState([]);
+
+  let history = useHistory();
 
   useEffect(() => {
     if (sha) {
@@ -47,6 +54,13 @@ function Files(props: FilesProps) {
   return (
     <div className="files wrap xl-flexbox xl-center">
 
+      <QMenu buttons={[
+        {
+          content: <MdArrowBack />,
+          onClick: () => { history.push("/commits") }
+        }
+      ]} />
+
       <ul className="col xl-3-4 xl-center">
         {files.map((file: string, index: number) => {
           return (
@@ -56,6 +70,8 @@ function Files(props: FilesProps) {
           )
         })}
       </ul>
+
+
     </div>
   )
 
