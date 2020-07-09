@@ -16,7 +16,7 @@ function QMenu(props: QMenuProps) {
     <div className="qmenu wrap">
       {props.buttons.length ? props.buttons.map((button: ButtonType, index: number) => {
         return (
-          <div className="col" key={index}>
+          <div className="col" onClick={(e) => button.onClick ? button.onClick(e) : null} key={index}>
             <div className="button_wrapper">
               {button.content}
             </div>
