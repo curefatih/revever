@@ -1,0 +1,24 @@
+.qmenu{
+  height: 50px;
+  background-color: transparentize($color: #000000, $amount: 0.8);
+  padding: 5px;
+  .col{
+    margin-right: 5px;
+    background-color: transparentize($color: #fff, $amount: 0.9);
+    border-radius: 10px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px transparentize($color: #000000, $amount: 0.5);
+    opacity: 0.5;
+    transition: .2s ease all;
+    &:hover {
+      opacity: 1;
+    }
+    .button_wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
