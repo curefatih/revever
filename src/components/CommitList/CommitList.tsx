@@ -39,7 +39,7 @@ function CommitList(props: CommitListProps) {
 
   return (
     <div className="commit-list">
-      {props.commits.data.length ?
+      {props.commits.data?.length ?
         <div className="wrap xl-flexbox xl-middle xl-center xl-middle">
           <div className="col xl-7-12 xl-left" style={{ padding: "10px" }}>
             <h5>Commit message:</h5>

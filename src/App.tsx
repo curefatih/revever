@@ -32,22 +32,7 @@ function App() {
                 </div>
               </Route>
             </Switch>
-            {/* <div className="wrap xl-flexbox xl-middle xl-center">
-            <div className="col xl-7-12 commit-card_wrapper" style={{ padding: "10px" }}>
-              <CommitCard tree="123" message="initial commit" />
-            </div>
-            <div className="col xl-2-12 point"></div>
-
-          </div>
-          <div className="wrap xl-flexbox xl-middle xl-center">
-            <div className="col xl-7-12 commit-card_wrapper" style={{ padding: "10px" }}>
-              <CommitCard tree="123" message="awesome commit" />
-            </div>
-            <div className="col xl-2-12 point"></div>
-
-          </div> */}
-
-
+          
           </div>
         </div>
       </Router>
