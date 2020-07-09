@@ -3,6 +3,10 @@ import { useHistory, useParams } from "react-router-dom";
 import { getCommits } from "../../redux/selectors";
 import { connect, ConnectedProps } from "react-redux";
 
+import './Files.scss';
+
+import File from '../../components/File/File';
+
 const mapStateToProps = (state: any) => {
   return {
     commits: getCommits(state),
@@ -41,13 +45,13 @@ function Files(props: FilesProps) {
   }, [])
 
   return (
-    <div className="files">
+    <div className="files wrap xl-flexbox xl-center">
 
-      <ul>
+      <ul className="col xl-3-4 xl-center">
         {files.map((file: string, index: number) => {
           return (
             <li key={index}>
-              {file}
+              <File name={file} />
             </li>
           )
         })}
